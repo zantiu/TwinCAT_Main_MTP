@@ -20,7 +20,7 @@
                     <INT />
                 </type>
             </variable>
-            <variable name="d">
+            <variable name="stepIndex">
                 <type>
                     <INT />
                 </type>

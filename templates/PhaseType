@@ -71,26 +71,6 @@
         </outputVars>
 
         <localVars>
-            <variable name="a">
-                <type>
-                    <INT />
-                </type>
-            </variable>
-            <variable name="b">
-                <type>
-                    <INT />
-                </type>
-            </variable>
-            <variable name="c">
-                <type>
-                    <INT />
-                </type>
-            </variable>
-            <variable name="d">
-                <type>
-                    <INT />
-                </type>
-            </variable>
         </localVars>
 
         
@@ -99,7 +79,63 @@
     </interface>
     <body>
         <ST>
-            <xhtml xmlns="http://www.w3.org/1999/xhtml">a:= b + c;</xhtml>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+                <![CDATA[
+
+CASE stepIndex OF
+{{~ # loop over all the sequences ~}}
+{{~ for sequence_name in ['Idle', 'Running', 'Completed', 'Holding', 'Held', 'Restarting', 'Aborting', 'Aborted'] ~}}
+	{{~ sequence = phase_type.sequences_by_name[sequence_name] ~}}   
+	{{~ if sequence         # checks if sequence is not null ~}}
+		{{~ # loop over all the steps ~}}
+		{{~ for step in sequence.ordered_steps ~}} 
+    // {{sequence.name }} - Step {{ step.name }}
+    {{ step.name }}:
+        //================================
+        {{ comment_all_lines(step.comment) }}
+        //--------------------------------
+        {{ comment_all_lines(step.actions) }}
+        //================================
+
+        // Action
+			{{~ for action in step.continuous_actions ~}}
+				{{~ if action.condition == "" ~}}
+        {{ tia_convert_action(action) }};
+				{{~ else ~}}
+				  {{~ if action.has_delay ~}}
+        StepTimer_{{ action.delay_timer_no }}.PT := T#1ms * REAL_TO_DINT({{ action.delay_timer_setting }} * {{ action.delay_multiplier }});
+        StepTimer_{{ action.delay_timer_no }}.IN := NOT #PL_Global.ST.NewStep AND {{ tia_convert_condition(action.condition) }};
+        StepTimer_{{ action.delay_timer_no }}();
+        IF (StepTimer_{{ action.delay_timer_no }}.Q) THEN 
+            {{ tia_convert_action(action) }};
+        END_IF;
+				  {{~ else ~}}
+        IF ({{ tia_convert_condition(action.condition) }}) THEN
+            {{ tia_convert_action(action) }};
+        END_IF;
+				  {{~ end ~}}
+				{{~ end ~}}
+			{{~ end ~}}
+
+            {{~ for transition in step.ordered_transitions ~}}	
+        // Transition {{ step.name }} to {{ transition.target }}
+        // {{ transition.comment }}
+        IF (
+            {{ tia_convert_condition(transition.condition_code) }}
+        ) THEN
+            #stepnumber := {{ transition.target }};
+            #state := {{ transition.target_sequence_integer }}; // {{ transition.target_sequence_name }}
+        END_IF;                
+        
+			{{~ end # for loop of transitions ~}}
+        
+		{{~ end # for loop of steps ~}}
+	{{~ end # if sequence exists ~}}
+{{~ end # for loop of sequences ~}}
+END_CASE
+
+                ]]>
+            </xhtml>
         </ST>
     </body>
 </pou>
