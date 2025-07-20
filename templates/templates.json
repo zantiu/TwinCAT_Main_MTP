@@ -1,1 +1,12 @@
-{}
+{
+  "Templates": [
+    {
+      "Name": "PhaseLogic",
+      "Type": "program"
+    },
+    {
+      "Name": "PhaseType",
+      "Type": "phase_type"
+    }
+  ]
+}

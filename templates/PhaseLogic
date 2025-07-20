@@ -1,0 +1,35 @@
+{{~
+    set_name('PhaseLogic')  
+    set_folder('_generated/PhaseLogic')
+~}}
+<pou name="PhaseLogic" pouType="functionBlock">
+    <interface>
+        <localVars>
+            <variable name="a">
+                <type>
+                    <INT />
+                </type>
+            </variable>
+            <variable name="b">
+                <type>
+                    <INT />
+                </type>
+            </variable>
+            <variable name="c">
+                <type>
+                    <INT />
+                </type>
+            </variable>
+            <variable name="d">
+                <type>
+                    <INT />
+                </type>
+            </variable>
+        </localVars>
+    </interface>
+    <body>
+        <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">a:= b + c;</xhtml>
+        </ST>
+    </body>
+</pou>

@@ -1,0 +1,105 @@
+{{~
+    set_name('PH_' + phase_type.name)  
+    set_folder('_generated/PhaseTypes')
+~}}
+<pou name="PH_{{phase_type.name}}" pouType="functionBlock">
+    <documentation>
+    This is a custom phase logic implementation
+  </documentation>
+    <interface>
+        <addData>
+            <data name="http://www.3s-software.com/plcopenxml/pouinheritance" handleUnknown="implementation">
+                <Inheritance>
+                    <Extends>PhaseLogic</Extends>
+                </Inheritance>
+            </data>
+        </addData>
+        <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> {{ phase_type.title }}</xhtml>
+        </documentation>
+
+        <inOutVars>
+
+            {{~## add all the control modules ##~}}
+            {{~ for linked_control_module in phase_type.linked_control_modules ~}}
+            <variable name="{{ linked_control_module.name}} ">
+                <type><derived name="{{ linked_control_module.cm_type_name }}" /></type>
+                <documentation><xhtml xmlns="http://www.w3.org/1999/xhtml"> {{ linked_control_module.comment }}</xhtml></documentation>
+            </variable>
+            {{~ end ~}}
+
+        </inOutVars>
+
+        <inputVars>
+
+            {{~## add all the inputs from the phase type ##~}}
+            {{~ for item in phase_type.inputs ~}}
+            <variable name="{{ item.name}} ">
+                <type><{{ map_data_type(item.data_type, 'BOOL', 'DINT', 'REAL') }} /></type>
+                <documentation><xhtml xmlns="http://www.w3.org/1999/xhtml"> {{ item.single_line_comment }}</xhtml></documentation>
+            </variable>
+            {{~ end ~}}
+
+        </inputVars>
+
+        <outputVars>
+
+            {{~## add all the outputs from the phase type ##~}}
+            {{~ for item in phase_type.outputs ~}}
+            <variable name="{{ item.name}} ">
+                <type><{{ map_data_type(item.data_type, 'BOOL', 'DINT', 'REAL') }} /></type>
+                <documentation><xhtml xmlns="http://www.w3.org/1999/xhtml"> {{ item.single_line_comment }}</xhtml></documentation>
+            </variable>
+            {{~ end ~}}
+
+            {{~## add all the outputs from the recipe parameters ##~}}
+            {{~ for item in phase_type.recipe_parameters ~}}
+            <variable name="{{ item.name}} ">
+                <type><{{ map_data_type(item.data_type, 'BOOL', 'DINT', 'REAL') }} /></type>
+                <documentation><xhtml xmlns="http://www.w3.org/1999/xhtml"> {{ item.single_line_comment }}</xhtml></documentation>
+            </variable>
+            {{~ end ~}}
+
+            {{~ # add outputs for the auto-generated timers -}}
+            {{~ for item in phase_type.ordered_timer_definitions ~}}
+            <variable name="{{ item.name}} ">
+                <type><{{ map_data_type(item.data_type, 'BOOL', 'DINT', 'REAL') }} /></type>
+                <documentation><xhtml xmlns="http://www.w3.org/1999/xhtml"> {{ item.single_line_comment }}</xhtml></documentation>
+            </variable>
+            {{~ end ~}}
+
+        </outputVars>
+
+        <localVars>
+            <variable name="a">
+                <type>
+                    <INT />
+                </type>
+            </variable>
+            <variable name="b">
+                <type>
+                    <INT />
+                </type>
+            </variable>
+            <variable name="c">
+                <type>
+                    <INT />
+                </type>
+            </variable>
+            <variable name="d">
+                <type>
+                    <INT />
+                </type>
+            </variable>
+        </localVars>
+
+        
+        <tempVars>
+        </tempVars>
+    </interface>
+    <body>
+        <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">a:= b + c;</xhtml>
+        </ST>
+    </body>
+</pou>
