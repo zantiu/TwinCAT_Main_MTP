@@ -4,32 +4,208 @@
 ~}}
 <pou name="PhaseLogic" pouType="functionBlock">
     <interface>
+
         <localVars>
-            <variable name="a">
-                <type>
-                    <INT />
-                </type>
-            </variable>
-            <variable name="b">
-                <type>
-                    <INT />
-                </type>
-            </variable>
-            <variable name="c">
-                <type>
-                    <INT />
-                </type>
-            </variable>
-            <variable name="stepIndex">
-                <type>
-                    <INT />
-                </type>
+            <variable name="dummy">
+                <type><BOOL /></type>
+                <documentation><xhtml xmlns="http://www.w3.org/1999/xhtml">Used to keep the template for calling the phase instances clean</xhtml></documentation>
             </variable>
         </localVars>
+
+        <localVars>
+            <variable name="stepIndex">
+                <type><INT /></type>
+            </variable>
+        </localVars>
+
     </interface>
     <body>
         <ST>
-            <xhtml xmlns="http://www.w3.org/1999/xhtml">a:= b + c;</xhtml>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
         </ST>
     </body>
+  <addData>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+        <Method name="MTP_Aborted">
+            <interface><returnType><BOOL /></returnType></interface>
+            <body>
+                <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+                </ST>
+            </body>
+        </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Aborting">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Completed">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Completing">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Execute">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>            
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Held">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Holding">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Paused">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Pausing">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Resetting">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Resuming">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Starting">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Stopped">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Stopping">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+    <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+      <Method name="MTP_Unholding">
+        <interface><returnType><BOOL /></returnType></interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+            </xhtml>
+          </ST>
+        </body>
+      </Method>
+    </data>
+
+  </addData>
+
 </pou>

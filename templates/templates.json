@@ -7,6 +7,18 @@
     {
       "Name": "PhaseType",
       "Type": "phase_type"
+    },
+    {
+      "Name": "PhaseInstances",
+      "Type": "program"
+    },
+    {
+      "Name": "MTPProcedure",
+      "Type": "mtp_procedure"
+    },
+    {
+      "Name": "GlobalVars",
+      "Type": "program"
     }
   ]
 }

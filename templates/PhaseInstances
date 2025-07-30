@@ -1,0 +1,39 @@
+{{~
+    set_name('PhaseInstances')  
+    set_folder('_generated/PhaseInstances')
+~}}
+<pou name="PhaseInstances" pouType="functionBlock">
+    <documentation>
+        Phase Instances
+    </documentation>
+    <interface>
+
+        <localVars>
+{{~ for phase_instance in model.ordered_phase_instances ~}}
+        <variable name="{{ phase_instance.name }}">
+            <type><derived name="PH_{{ phase_instance.phase_type.name }}" /></type>
+        </variable>
+{{~ end ~}}
+        </localVars>
+
+    </interface>
+    <body>
+        <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">
+                <![CDATA[
+
+{{~ for phase_instance in model.ordered_phase_instances ~}}
+{{ phase_instance.name }}(
+    {{~ for linked_cm in phase_instance.linked_cm_instances ~}}
+        {{ linked_cm.key }} := "CM_{{ linked_cm.value.cm_type_name }}".{{ linked_cm.value.name }},
+    {{~ end ~}} 
+        dummy:= false 
+);
+
+{{~ end ~}} 
+
+                ]]>
+            </xhtml>
+        </ST>
+    </body>
+</pou>

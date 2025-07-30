@@ -4,8 +4,8 @@
 ~}}
 <pou name="PH_{{phase_type.name}}" pouType="functionBlock">
     <documentation>
-    This is a custom phase logic implementation
-  </documentation>
+        Phase Type
+    </documentation>
     <interface>
         <addData>
             <data name="http://www.3s-software.com/plcopenxml/pouinheritance" handleUnknown="implementation">

@@ -1,0 +1,13 @@
+{{~
+    set_name('GlobalVarsGenerated')  
+    set_folder('_generated/GlobalVars')
+~}}
+<globalVars name="GlobalVarsGenerated">
+    <variable name="PhaseInstances">
+        <type><derived name="PhaseInstances" /></type>
+        <initialValue>
+            <structValue>
+            </structValue>
+        </initialValue>
+    </variable>
+</globalVars>
