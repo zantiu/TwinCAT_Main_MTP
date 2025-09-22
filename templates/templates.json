@@ -1,23 +1,31 @@
 {
   "Templates": [
     {
-      "Name": "PhaseLogic",
+      "Name": "EnumPhaseState.xml",
       "Type": "program"
     },
     {
-      "Name": "PhaseType",
+      "Name": "GlobalVarsPhaseInstances.xml",
+      "Type": "program"
+    },
+    {
+      "Name": "PhaseLogic.xml",
+      "Type": "program"
+    },
+    {
+      "Name": "PhaseType.xml",
       "Type": "phase_type"
     },
     {
-      "Name": "PhaseInstances",
+      "Name": "CallPhaseInstances.xml",
       "Type": "program"
     },
     {
-      "Name": "MTPProcedure",
+      "Name": "MTPProcedure.xml",
       "Type": "mtp_procedure"
     },
     {
-      "Name": "GlobalVars",
+      "Name": "CallAllGenerated.xml",
       "Type": "program"
     }
   ]
